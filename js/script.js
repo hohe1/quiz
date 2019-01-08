@@ -1,8 +1,11 @@
 /* global $ */
 
 
-$(document).ready(function(){
-    var result = ["GW","MW","JB","NC","GG","TB","DB"];
+//$(document).ready(function(){
+    var options = [`Some random guy who hates alcohol`,`Jay Gatsby`,`nick carraway`,
+    `Daisy Buchanan`,`Tom Buchanan","Jordan Baker`,`dog`,`Myrtle Wilson`,
+    `George Wilson`];
+
     var q2A;
     var q3A;
     var q4A;
@@ -19,6 +22,7 @@ $(document).ready(function(){
         question5();
         question7();
         console.log(name+q2A+q3A+q4A+q5A+q6A+q7A);
+        
         
     });
         
@@ -46,6 +50,7 @@ function question2(){
     var q2 = $("#question2").val();
     if(q2.toLowerCase().trim() === "alcohol"){
         q2A = true;
+        
     }else if(q2.trim() !== ""){
         q2A = false;
     }else{
@@ -58,7 +63,6 @@ function question3(){
     var q3 = $("#question3").val();
     if(q3.toLowerCase().trim() === "green light"){
         q3A = true;
-        result = "gatsby";
     }else if(q3.toLowerCase().trim() !== ""){
         q3A = false;
     }else{
@@ -80,7 +84,7 @@ function question4(){
         
 //question 5
 function question5(){
-    var q5 = $("input[name = 'b']").val();
+    var q5 = $("input[name = 'b']:checked").val();
         if(q5 ==="yes" || q5 ==="someTimes"){
             q5A = true;
         }else if(q5 ==="no"){
@@ -90,7 +94,7 @@ function question5(){
     
 // question 6 bad driver
 function question6(){
-    var q6 = $("input[name = 'a']").val();
+    var q6 = $("input[name = 'a']:checked").val();
         if(q6 ==="yes"){
             q6A = true;
         }else if(q6 ==="no"){
@@ -99,12 +103,39 @@ function question6(){
 }
 //  question 7 range
 function question7(){
-    var q7 = $("#q7").val();
-    //console.log(q7);
-    //SES = SES += parseInt(q7);
+    var q7 = $("input[name = 'd']:checked").val();
+        if(q7 ==="yes"){
+            q7A = true;
+            console.log("you're a dog.");
+        }else if(q7 ==="no"){
+            q7A = false;
+        }else{/*nothing at all*/} 
+}
+    
  
+//the function that give you the result yay
+function removes(Cname){
+    if(options.indexOf(Cname) !== -1){
+        options.splice(options.indexOf(Cname), 1);
+        console.log("beep");
     }
-});
+    
+    
+    
+    
+    // for(var i =0;i<options.length;i++){
+    //     if(options.indexOf(i) === Cname){
+    //         console.log(i);
+    //         return i;
+    //    }
+    //}
+}
+
+
+
+
+
+//});
 
         
         
