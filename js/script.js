@@ -2,10 +2,13 @@
 
 
 //$(document).ready(function(){
-    var options = [`Some random guy who hates alcohol`,`Jay Gatsby`,`nick carraway`,
+    var options = [`Some random guy who hates alcohol`,`Jay Gatsby`,`Nick Carraway`,
     `Daisy Buchanan`,`Tom Buchanan`,`Jordan Baker`,`dog`,`Myrtle Wilson`,
     `George Wilson`];
 
+    var result;
+    var name;
+    
     var q2A;
     var q3A;
     var q4A;
@@ -14,18 +17,27 @@
     var q7A;
     
     $("button").click(function() {
-    
+        options = [`Some random guy who hates alcohol`,`Jay Gatsby`,`Nick Carraway`,
+    `Daisy Buchanan`,`Tom Buchanan`,`Jordan Baker`,`dog`,`Myrtle Wilson`,
+    `George Wilson`];
+        $("#actualResult").html("");
         
-        var name = $("#name").val();
+        name = $("#name").val();
         question1();
         question2();
         question3();
         question4();
         question5();
+        question6();
         question7();
         console.log(name+q2A+q3A+q4A+q5A+q6A+q7A);
         console.log(options);
         
+        
+
+        actual();
+        
+        //$("#actualResult").text(result);
     });
         
         
@@ -43,7 +55,11 @@
 // debugger
 //question1
 function question1(){
-    var name = $("#question1").val();
+    var name = $("#name").val();
+    
+    console.log(name);
+        
+    $("h3").text(name+" you may be:");
 }
 
 
@@ -54,7 +70,7 @@ function question2(){
         q2A = true;
         
         removes("Jay Gatsby");
-        removes("nick carraway");
+        removes("Nick Carraway");
         removes("Daisy Buchanan");
         removes("Tom Buchanan");
         removes("Jordan Baker");
@@ -78,8 +94,7 @@ function question3(){
         q3A = true;
         
         removes("Some random guy who hates alcohol");
-        removes("dog");
-        removes("nick carraway");
+        removes("Nick Carraway");
         removes("Daisy Buchanan");
         removes("Tom Buchanan");
         removes("Jordan Baker");
@@ -104,9 +119,8 @@ function question4(){
             
         removes("Some random guy who hates alcohol");
         removes("Jay Gatsby");
-        removes("nick carraway");
+        removes("Nick Carraway");
         removes("Daisy Buchanan");
-        removes("Tom Buchanan");
         removes("Jordan Baker");
 
         }else if(q4 === "no"){
@@ -114,6 +128,7 @@ function question4(){
             
         removes("Myrtle Wilson");
         removes("George Wilson");
+
             
         }else{
         //nothing
@@ -127,13 +142,13 @@ function question5(){
             q5A = true;
             
         removes("George Wilson");
-        
+        removes("Some random guy who hates alcohol");
 
         }else if(q5 ==="no"){
             q5A = false;
             
         removes("Myrtle Wilson");
-        removes("nick carraway");
+        removes("Nick Carraway");
         removes("Daisy Buchanan");
         removes("Tom Buchanan");
         removes("Jordan Baker");
@@ -147,11 +162,12 @@ function question6(){
         if(q6 ==="yes"){
             q6A = true;
             
+        removes("George Wilson");    
         removes("Myrtle Wilson");
-        removes("nick carraway");
-        removes("Daisy Buchanan");
+        removes("Nick Carraway");
         removes("Tom Buchanan");
         removes("Jay Gatsby");
+        removes("Some random guy who hates alcohol");
 
         }else if(q6 ==="no"){
             q6A = false;
@@ -168,7 +184,7 @@ function question7(){
             q7A = true;
             
         removes("Jay Gatsby");
-        removes("nick carraway");
+        removes("Nick Carraway");
         removes("Daisy Buchanan");
         removes("Tom Buchanan");
         removes("Jordan Baker");
@@ -205,7 +221,27 @@ function removes(Cname){
     //}
 }
 
+function actual(){
+    //result = name+", you maybe:";
+    
+    console.log("i exist");
+    
+    if(options.length !== 0){
+        options.forEach(function(a){
+            $("#actualResult").append("<li>"+`${a}`+"</li>");
+         
+        });
+            console.log(result);
 
+        //return result.trim() +".";
+    }else{
+            $("#actualResult").append("<li>we don't know who fits you.</li>");
+            console.log(result);
+            
+        //return result ="<li>we don't know who fits you</li>";
+    }
+    
+}
 
 
 
